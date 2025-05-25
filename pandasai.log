@@ -1,0 +1,1897 @@
+2025-05-25 18:55:18 [INFO] Question: System: you are sql agent 
+User: how many cars are having Fuel_Type is petrol
+2025-05-25 18:55:19 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 18:55:19 [INFO] Prompt ID: 2f77ca1e-4f4e-47a7-b7a2-6d4849f3251a
+2025-05-25 18:55:19 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 18:55:19 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 18:55:19 [INFO] Executing Step 1: CacheLookup
+2025-05-25 18:55:19 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 18:55:19 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Royal Enfield Thunder 350,2011,8.75,8.61,8000,CNG,Dealer,Automatic,1
+ciaz,2017,1.05,1.5,72000,Petrol,Individual,Manual,3
+Bajaj Avenger 220 dtsi,2008,4.4,7.5,54242,Diesel,Dealer,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent 
+User: how many cars are having Fuel_Type is petrol
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 18:55:19 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 18:55:23 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 18:55:23 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Royal Enfield Thunder 350,2011,8.75,8.61,8000,CNG,Dealer,Automatic,1
+ciaz,2017,1.05,1.5,72000,Petrol,Individual,Manual,3
+Bajaj Avenger 220 dtsi,2008,4.4,7.5,54242,Diesel,Dealer,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent 
+User: how many cars are having Fuel_Type is petrol
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 18:55:23 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+# Assuming dfs is a list of dataframes and we're working with the first dataframe
+df = dfs[0]
+
+# Filter the dataframe to get the number of cars with Fuel_Type as Petrol
+num_cars_petrol = len(df[df['Fuel_Type'] == 'Petrol'])
+
+# Declare result var: 
+result = { "type": "number", "value": num_cars_petrol }
+
+# Alternatively, if you want to plot a chart
+# plt.figure(figsize=(10,6))
+# df['Fuel_Type'].value_counts().plot(kind='bar')
+# plt.title('Number of Cars by Fuel Type')
+# plt.xlabel('Fuel Type')
+# plt.ylabel('Count')
+# plt.savefig('fuel_type_chart.png')
+# result = { "type": "plot", "value": "fuel_type_chart.png" }
+            ```
+            
+2025-05-25 18:55:23 [INFO] Executing Step 4: CachePopulation
+2025-05-25 18:55:23 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 18:55:23 [INFO] Saving charts to C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\exports\charts\temp_chart.png
+2025-05-25 18:55:23 [INFO] 
+Code running:
+```
+df = dfs[0]
+num_cars_petrol = len(df[df['Fuel_Type'] == 'Petrol'])
+result = {'type': 'number', 'value': num_cars_petrol}
+        ```
+2025-05-25 18:55:23 [INFO] Executing Step 6: CodeExecution
+2025-05-25 18:55:23 [INFO] Executing Step 7: ResultValidation
+2025-05-25 18:55:23 [INFO] Answer: {'type': 'number', 'value': 239}
+2025-05-25 18:55:23 [INFO] Executing Step 8: ResultParsing
+2025-05-25 19:00:55 [INFO] Question: System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol
+2025-05-25 19:00:56 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 19:00:56 [INFO] Prompt ID: ad20cf7f-49f7-4b37-9b14-32b54cc6c513
+2025-05-25 19:00:56 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 19:00:56 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 19:00:56 [INFO] Executing Step 1: CacheLookup
+2025-05-25 19:00:56 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 19:00:56 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Bajaj Pulsar 220 F,2006,11.25,92.6,60076,CNG,Dealer,Automatic,1
+brio,2004,19.75,13.7,20000,Diesel,Dealer,Manual,0
+swift,2017,3.6,4.89,25000,Petrol,Individual,Manual,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 19:00:56 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 19:00:58 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:00:58 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Bajaj Pulsar 220 F,2006,11.25,92.6,60076,CNG,Dealer,Automatic,1
+brio,2004,19.75,13.7,20000,Diesel,Dealer,Manual,0
+swift,2017,3.6,4.89,25000,Petrol,Individual,Manual,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 19:00:58 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data
+data = {
+    "Car_Name": ["Bajaj Pulsar 220 F", "brio", "swift"],
+    "Year": [2006, 2004, 2017],
+    "Selling_Price": [11.25, 19.75, 3.6],
+    "Present_Price": [92.6, 13.7, 4.89],
+    "Kms_Driven": [60076, 20000, 25000],
+    "Fuel_Type": ["CNG", "Diesel", "Petrol"],
+    "Seller_Type": ["Dealer", "Dealer", "Individual"],
+    "Transmission": ["Automatic", "Manual", "Manual"],
+    "Owner": [1, 0, 3]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Since dfs is a list of dataframes, we will assume the above dataframe is the first element of dfs
+dfs = [df]
+
+# Write code here
+def get_number_of_cars_with_fuel_type(fuel_type):
+    """
+    This function takes a fuel type as input and returns the number of cars with that fuel type.
+
+    Args:
+        fuel_type (str): The fuel type to search for.
+
+    Returns:
+        int: The number of cars with the specified fuel type.
+    """
+    # Filter the dataframe to only include rows where the fuel type matches the input
+    filtered_df = dfs[0][dfs[0]["Fuel_Type"] == fuel_type]
+
+    # Return the number of rows in the filtered dataframe
+    return len(filtered_df)
+
+# Call the function with the fuel type "Petrol"
+num_cars_with_petrol = get_number_of_cars_with_fuel_type("Petrol")
+
+# Declare result var: 
+result = {
+    "type": "number",
+    "value": num_cars_with_petrol
+}
+print(result)
+            ```
+            
+2025-05-25 19:00:58 [INFO] Executing Step 4: CachePopulation
+2025-05-25 19:00:58 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 19:00:58 [INFO] 
+Code running:
+```
+data = {'Car_Name': ['Bajaj Pulsar 220 F', 'brio', 'swift'], 'Year': [2006, 2004, 2017], 'Selling_Price': [11.25, 19.75, 3.6], 'Present_Price': [92.6, 13.7, 4.89], 'Kms_Driven': [60076, 20000, 25000], 'Fuel_Type': ['CNG', 'Diesel', 'Petrol'], 'Seller_Type': ['Dealer', 'Dealer', 'Individual'], 'Transmission': ['Automatic', 'Manual', 'Manual'], 'Owner': [1, 0, 3]}
+df = dfs[0]
+
+
+def get_number_of_cars_with_fuel_type(fuel_type):
+    """
+    This function takes a fuel type as input and returns the number of cars with that fuel type.
+
+    Args:
+        fuel_type (str): The fuel type to search for.
+
+    Returns:
+        int: The number of cars with the specified fuel type.
+    """
+    filtered_df = dfs[0][dfs[0]['Fuel_Type'] == fuel_type]
+    return len(filtered_df)
+
+
+num_cars_with_petrol = get_number_of_cars_with_fuel_type('Petrol')
+result = {'type': 'number', 'value': num_cars_with_petrol}
+print(result)
+        ```
+2025-05-25 19:00:58 [INFO] Executing Step 6: CodeExecution
+2025-05-25 19:00:58 [INFO] Executing Step 7: ResultValidation
+2025-05-25 19:00:58 [INFO] Answer: {'type': 'number', 'value': 239}
+2025-05-25 19:00:58 [INFO] Executing Step 8: ResultParsing
+2025-05-25 19:01:00 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:01:16 [INFO] Question: System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol 
+2025-05-25 19:01:16 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 19:01:17 [INFO] Prompt ID: 18e008d7-0a7e-4d77-9a2b-235b012f27e1
+2025-05-25 19:01:17 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 19:01:17 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 19:01:17 [INFO] Executing Step 1: CacheLookup
+2025-05-25 19:01:17 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 19:01:17 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Bajaj Pulsar 220 F,2006,11.25,92.6,60076,CNG,Dealer,Automatic,1
+brio,2004,19.75,13.7,20000,Diesel,Dealer,Manual,0
+swift,2017,3.6,4.89,25000,Petrol,Individual,Manual,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 19:01:17 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 19:01:18 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:01:18 [INFO] Prompt used:
+            
+
+### PREVIOUS CONVERSATION
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol
+### ANSWER
+ 239
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Bajaj Pulsar 220 F,2006,11.25,92.6,60076,CNG,Dealer,Automatic,1
+brio,2004,19.75,13.7,20000,Diesel,Dealer,Manual,0
+swift,2017,3.6,4.89,25000,Petrol,Individual,Manual,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 19:01:18 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Accessing the provided cars data
+df = dfs[0]
+
+# Filtering the data to get the number of cars with Fuel_Type as Petrol
+num_petrol_cars = df[df['Fuel_Type'] == 'Petrol'].shape[0]
+
+# Declare result var: 
+result = { 
+    "type": "number", 
+    "value": num_petrol_cars 
+}
+            ```
+            
+2025-05-25 19:01:18 [INFO] Executing Step 4: CachePopulation
+2025-05-25 19:01:18 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 19:01:18 [INFO] 
+Code running:
+```
+df = dfs[0]
+num_petrol_cars = df[df['Fuel_Type'] == 'Petrol'].shape[0]
+result = {'type': 'number', 'value': num_petrol_cars}
+        ```
+2025-05-25 19:01:18 [INFO] Executing Step 6: CodeExecution
+2025-05-25 19:01:18 [INFO] Executing Step 7: ResultValidation
+2025-05-25 19:01:18 [INFO] Answer: {'type': 'number', 'value': 239}
+2025-05-25 19:01:18 [INFO] Executing Step 8: ResultParsing
+2025-05-25 19:01:19 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:01:40 [INFO] Question: System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are there in total 
+2025-05-25 19:01:40 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 19:01:40 [INFO] Prompt ID: 3f8ba497-f9a7-4995-9f8d-cc5ebf3e8dbe
+2025-05-25 19:01:40 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 19:01:40 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 19:01:40 [INFO] Executing Step 1: CacheLookup
+2025-05-25 19:01:40 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 19:01:40 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Bajaj Pulsar 220 F,2006,11.25,92.6,60076,CNG,Dealer,Automatic,1
+brio,2004,19.75,13.7,20000,Diesel,Dealer,Manual,0
+swift,2017,3.6,4.89,25000,Petrol,Individual,Manual,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are there in total 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 19:01:40 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 19:01:41 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:01:41 [INFO] Prompt used:
+            
+
+### PREVIOUS CONVERSATION
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol
+### ANSWER
+ 239
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol 
+### ANSWER
+ 239
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Bajaj Pulsar 220 F,2006,11.25,92.6,60076,CNG,Dealer,Automatic,1
+brio,2004,19.75,13.7,20000,Diesel,Dealer,Manual,0
+swift,2017,3.6,4.89,25000,Petrol,Individual,Manual,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are there in total 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 19:01:41 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+# Since we have a list of dataframes, we will iterate over each dataframe and calculate the total number of cars
+total_cars = 0
+for df in dfs:
+    total_cars += len(df)
+
+# Declare result var: 
+result = { "type": "number", "value": total_cars }
+            ```
+            
+2025-05-25 19:01:41 [INFO] Executing Step 4: CachePopulation
+2025-05-25 19:01:41 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 19:01:41 [INFO] 
+Code running:
+```
+total_cars = 0
+for df in dfs:
+    total_cars += len(df)
+result = {'type': 'number', 'value': total_cars}
+        ```
+2025-05-25 19:01:41 [INFO] Executing Step 6: CodeExecution
+2025-05-25 19:01:41 [INFO] Executing Step 7: ResultValidation
+2025-05-25 19:01:41 [INFO] Answer: {'type': 'number', 'value': 301}
+2025-05-25 19:01:41 [INFO] Executing Step 8: ResultParsing
+2025-05-25 19:01:43 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:03:10 [INFO] Question: System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are there in total 
+2025-05-25 19:03:11 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 19:03:11 [INFO] Prompt ID: 622b0ecf-1c88-41ff-af44-f854e7e07857
+2025-05-25 19:03:11 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 19:03:11 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 19:03:11 [INFO] Executing Step 1: CacheLookup
+2025-05-25 19:03:11 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 19:03:11 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+xcent,2012,20.75,13.09,46500,Petrol,Dealer,Automatic,3
+Bajaj Discover 100,2010,3.51,22.83,50024,Diesel,Dealer,Automatic,1
+Bajaj  ct 100,2003,1.7,6.49,197176,CNG,Individual,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are there in total 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 19:03:11 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 19:03:12 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:03:12 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+xcent,2012,20.75,13.09,46500,Petrol,Dealer,Automatic,3
+Bajaj Discover 100,2010,3.51,22.83,50024,Diesel,Dealer,Automatic,1
+Bajaj  ct 100,2003,1.7,6.49,197176,CNG,Individual,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are there in total 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 19:03:12 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+# Get the total number of cars
+total_cars = len(dfs[0])
+
+# Declare result var: 
+result = { "type": "number", "value": total_cars }
+            ```
+            
+2025-05-25 19:03:12 [INFO] Executing Step 4: CachePopulation
+2025-05-25 19:03:12 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 19:03:12 [INFO] 
+Code running:
+```
+total_cars = len(dfs[0])
+result = {'type': 'number', 'value': total_cars}
+        ```
+2025-05-25 19:03:12 [INFO] Executing Step 6: CodeExecution
+2025-05-25 19:03:12 [INFO] Executing Step 7: ResultValidation
+2025-05-25 19:03:12 [INFO] Answer: {'type': 'number', 'value': 301}
+2025-05-25 19:03:12 [INFO] Executing Step 8: ResultParsing
+2025-05-25 19:03:13 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:03:31 [INFO] Question: System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol 
+2025-05-25 19:03:31 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 19:03:31 [INFO] Prompt ID: 2ea85fe1-6876-43b8-9fd3-a522e775c7ec
+2025-05-25 19:03:31 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 19:03:31 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 19:03:31 [INFO] Executing Step 1: CacheLookup
+2025-05-25 19:03:31 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 19:03:31 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+xcent,2012,20.75,13.09,46500,Petrol,Dealer,Automatic,3
+Bajaj Discover 100,2010,3.51,22.83,50024,Diesel,Dealer,Automatic,1
+Bajaj  ct 100,2003,1.7,6.49,197176,CNG,Individual,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 19:03:31 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 19:03:33 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:03:33 [INFO] Prompt used:
+            
+
+### PREVIOUS CONVERSATION
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are there in total 
+### ANSWER
+ 301
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+xcent,2012,20.75,13.09,46500,Petrol,Dealer,Automatic,3
+Bajaj Discover 100,2010,3.51,22.83,50024,Diesel,Dealer,Automatic,1
+Bajaj  ct 100,2003,1.7,6.49,197176,CNG,Individual,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent working one provided cars data and give accurate response to the user queries 
+User: how many cars are having Fuel_Type is petrol 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 19:03:33 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data into a DataFrame
+dfs = [pd.DataFrame({
+    'Car_Name': ['xcent', 'Bajaj Discover 100', 'Bajaj ct 100'],
+    'Year': [2012, 2010, 2003],
+    'Selling_Price': [20.75, 3.51, 1.7],
+    'Present_Price': [13.09, 22.83, 6.49],
+    'Kms_Driven': [46500, 50024, 197176],
+    'Fuel_Type': ['Petrol', 'Diesel', 'CNG'],
+    'Seller_Type': ['Dealer', 'Dealer', 'Individual'],
+    'Transmission': ['Automatic', 'Automatic', 'Manual'],
+    'Owner': [3, 1, 0]
+})]
+
+# Query: how many cars are having Fuel_Type is petrol
+petrol_cars = dfs[0][dfs[0]['Fuel_Type'] == 'Petrol']
+num_petrol_cars = len(petrol_cars)
+
+# Declare result var: 
+result = { 
+    "type": "number", 
+    "value": num_petrol_cars 
+}
+            ```
+            
+2025-05-25 19:03:33 [INFO] Executing Step 4: CachePopulation
+2025-05-25 19:03:33 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 19:03:33 [INFO] 
+Code running:
+```
+petrol_cars = dfs[0][dfs[0]['Fuel_Type'] == 'Petrol']
+num_petrol_cars = len(petrol_cars)
+result = {'type': 'number', 'value': num_petrol_cars}
+        ```
+2025-05-25 19:03:33 [INFO] Executing Step 6: CodeExecution
+2025-05-25 19:03:33 [INFO] Executing Step 7: ResultValidation
+2025-05-25 19:03:33 [INFO] Answer: {'type': 'number', 'value': 239}
+2025-05-25 19:03:33 [INFO] Executing Step 8: ResultParsing
+2025-05-25 19:03:34 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:20:17 [INFO] Question: System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+2025-05-25 19:20:17 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 19:20:17 [INFO] Prompt ID: 05db61f1-6cf5-429b-827c-ba26ce4734a6
+2025-05-25 19:20:17 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 19:20:17 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 19:20:17 [INFO] Executing Step 1: CacheLookup
+2025-05-25 19:20:17 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 19:20:17 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 19:20:17 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 19:20:19 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:20:19 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 19:20:19 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data
+data = dfs[0]
+
+# Calculate the average selling price of cars in the dataset
+average_selling_price = data['Selling_Price'].mean()
+
+# Group the data by year and calculate the average selling price for each year
+average_selling_price_over_time = data.groupby('Year')['Selling_Price'].mean()
+
+# Plot the average selling price over time
+plt.figure(figsize=(10,6))
+plt.plot(average_selling_price_over_time.index, average_selling_price_over_time.values, marker='o')
+plt.title('Average Selling Price of Cars Over Time')
+plt.xlabel('Year')
+plt.ylabel('Average Selling Price')
+plt.grid(True)
+plt.savefig('average_selling_price_over_time.png', bbox_inches='tight')
+
+# Declare result var:
+result = {
+    "type": "string",
+    "value": f"The average selling price of cars in the dataset is {average_selling_price:.2f}. The plot of the average selling price over time has been saved as 'average_selling_price_over_time.png'."
+}
+            ```
+            
+2025-05-25 19:20:19 [INFO] Executing Step 4: CachePopulation
+2025-05-25 19:20:19 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 19:20:19 [INFO] Saving charts to C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\exports\charts\temp_chart.png
+2025-05-25 19:20:19 [INFO] 
+Code running:
+```
+data = dfs[0]
+average_selling_price = data['Selling_Price'].mean()
+average_selling_price_over_time = data.groupby('Year')['Selling_Price'].mean()
+plt.figure(figsize=(10, 6))
+plt.plot(average_selling_price_over_time.index, average_selling_price_over_time.values, marker='o')
+plt.title('Average Selling Price of Cars Over Time')
+plt.xlabel('Year')
+plt.ylabel('Average Selling Price')
+plt.grid(True)
+plt.savefig('C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png', bbox_inches='tight')
+result = {'type': 'string', 'value': f"The average selling price of cars in the dataset is {average_selling_price:.2f}. The plot of the average selling price over time has been saved as 'C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png'."}
+        ```
+2025-05-25 19:20:19 [INFO] Executing Step 6: CodeExecution
+2025-05-25 19:20:20 [INFO] Executing Step 7: ResultValidation
+2025-05-25 19:20:20 [INFO] Answer: {'type': 'string', 'value': "The average selling price of cars in the dataset is 4.66. The plot of the average selling price over time has been saved as 'C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png'."}
+2025-05-25 19:20:20 [INFO] Executing Step 8: ResultParsing
+2025-05-25 19:20:22 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:22:58 [INFO] Question: System: you are a sql agent working on car data and give accurate responses to the user queries
+User: For popular car models, how has their Selling_Price depreciated over time (i.e., with increasing Year)?
+2025-05-25 19:22:58 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 19:22:58 [INFO] Prompt ID: d7a1cf35-1294-4880-8700-e4b0b2db92e6
+2025-05-25 19:22:58 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 19:22:58 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 19:22:58 [INFO] Executing Step 1: CacheLookup
+2025-05-25 19:22:58 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 19:22:58 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: For popular car models, how has their Selling_Price depreciated over time (i.e., with increasing Year)?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 19:22:58 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 19:23:00 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:23:00 [INFO] Prompt used:
+            
+
+### PREVIOUS CONVERSATION
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: For popular car models, how has their Selling_Price depreciated over time (i.e., with increasing Year)?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 19:23:00 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data
+dfs = [pd.DataFrame({
+    'Car_Name': ['Honda Karizma', 'Honda Activa 4G', 'i10'],
+    'Year': [2003, 2013, 2011],
+    'Selling_Price': [5.9, 10.11, 0.35],
+    'Present_Price': [0.82, 0.58, 13.7],
+    'Kms_Driven': [51439, 41678, 9000],
+    'Fuel_Type': ['Diesel', 'Petrol', 'CNG'],
+    'Seller_Type': ['Individual', 'Dealer', 'Individual'],
+    'Transmission': ['Automatic', 'Manual', 'Automatic'],
+    'Owner': [1, 0, 3]
+})]
+
+# Filter popular car models (assuming top 3 models)
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+
+# Initialize an empty list to store the results
+results = []
+
+# Loop through each popular model
+for model in popular_models:
+    # Filter the data for the current model
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    
+    # Calculate the depreciation over time
+    depreciation = model_data[['Year', 'Selling_Price']]
+    
+    # Append the result to the list
+    results.append(depreciation)
+
+# Plot the depreciation over time for each popular model
+plt.figure(figsize=(10,6))
+for i, result in enumerate(results):
+    plt.plot(result['Year'], result['Selling_Price'], label=popular_models[i])
+plt.xlabel('Year')
+plt.ylabel('Selling Price')
+plt.title('Depreciation of Popular Car Models Over Time')
+plt.legend()
+plt.savefig('depreciation_over_time.png')
+
+# Declare result var: 
+result = {
+    "type": "plot", 
+    "value": "depreciation_over_time.png"
+}
+            ```
+            
+2025-05-25 19:23:00 [INFO] Executing Step 4: CachePopulation
+2025-05-25 19:23:00 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 19:23:00 [INFO] Saving charts to C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\exports\charts\temp_chart.png
+2025-05-25 19:23:00 [INFO] 
+Code running:
+```
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+results = []
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    depreciation = model_data[['Year', 'Selling_Price']]
+    results.append(depreciation)
+plt.figure(figsize=(10, 6))
+for i, result in enumerate(results):
+    plt.plot(result['Year'], result['Selling_Price'], label=popular_models[i])
+plt.xlabel('Year')
+plt.ylabel('Selling Price')
+plt.title('Depreciation of Popular Car Models Over Time')
+plt.legend()
+plt.savefig('C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png'}
+        ```
+2025-05-25 19:23:00 [INFO] Executing Step 6: CodeExecution
+2025-05-25 19:23:00 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+2025-05-25 19:23:00 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2025-05-25 19:23:00 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2025-05-25 19:23:00 [INFO] Executing Step 0: ErrorPromptGeneration
+2025-05-25 19:23:00 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: For popular car models, how has their Selling_Price depreciated over time (i.e., with increasing Year)?
+
+You generated this python code:
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+results = []
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    depreciation = model_data[['Year', 'Selling_Price']]
+    results.append(depreciation)
+plt.figure(figsize=(10, 6))
+for i, result in enumerate(results):
+    plt.plot(result['Year'], result['Selling_Price'], label=popular_models[i])
+plt.xlabel('Year')
+plt.ylabel('Selling Price')
+plt.title('Depreciation of Popular Car Models Over Time')
+plt.legend()
+plt.savefig('C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+2025-05-25 19:23:00 [INFO] Executing Step 1: CodeGenerator
+2025-05-25 19:23:03 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:23:03 [INFO] Prompt used:
+            
+
+### PREVIOUS CONVERSATION
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: For popular car models, how has their Selling_Price depreciated over time (i.e., with increasing Year)?
+
+You generated this python code:
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+results = []
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    depreciation = model_data[['Year', 'Selling_Price']]
+    results.append(depreciation)
+plt.figure(figsize=(10, 6))
+for i, result in enumerate(results):
+    plt.plot(result['Year'], result['Selling_Price'], label=popular_models[i])
+plt.xlabel('Year')
+plt.ylabel('Selling Price')
+plt.title('Depreciation of Popular Car Models Over Time')
+plt.legend()
+plt.savefig('C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': 'C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png'}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 97, in execute
+    raise InvalidOutputValueMismatch(
+pandasai.exceptions.InvalidOutputValueMismatch: Value type <class 'str'> must match with type plot
+
+
+Fix the python code above and return the new python code:
+            
+2025-05-25 19:23:03 [INFO] Code generated:
+            ```
+            import matplotlib.pyplot as plt
+import pandas as pd
+
+# Get the top 3 popular car models
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+
+# Create a figure and axis
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot the depreciation of each popular car model
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    ax.plot(model_data['Year'], model_data['Selling_Price'], label=model)
+
+# Set the title and labels
+ax.set_xlabel('Year')
+ax.set_ylabel('Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+
+# Add a legend
+ax.legend()
+
+# Display the plot
+plt.show()
+            ```
+            
+2025-05-25 19:23:03 [INFO] Executing Step 2: CodeCleaning
+2025-05-25 19:23:03 [INFO] 
+Code running:
+```
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+fig, ax = plt.subplots(figsize=(10, 6))
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    ax.plot(model_data['Year'], model_data['Selling_Price'], label=model)
+ax.set_xlabel('Year')
+ax.set_ylabel('Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+ax.legend()
+plt.show()
+        ```
+2025-05-25 19:23:16 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2025-05-25 19:23:16 [WARNING] Failed to execute code retrying with a correction framework [retry number: 2]
+2025-05-25 19:23:16 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2025-05-25 19:23:16 [INFO] Executing Step 0: ErrorPromptGeneration
+2025-05-25 19:23:16 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: For popular car models, how has their Selling_Price depreciated over time (i.e., with increasing Year)?
+
+You generated this python code:
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+fig, ax = plt.subplots(figsize=(10, 6))
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    ax.plot(model_data['Year'], model_data['Selling_Price'], label=model)
+ax.set_xlabel('Year')
+ax.set_ylabel('Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+ax.legend()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2025-05-25 19:23:16 [INFO] Executing Step 1: CodeGenerator
+2025-05-25 19:23:18 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:23:18 [INFO] Prompt used:
+            
+
+### PREVIOUS CONVERSATION
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: For popular car models, how has their Selling_Price depreciated over time (i.e., with increasing Year)?
+
+You generated this python code:
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+fig, ax = plt.subplots(figsize=(10, 6))
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    ax.plot(model_data['Year'], model_data['Selling_Price'], label=model)
+ax.set_xlabel('Year')
+ax.set_ylabel('Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+ax.legend()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2025-05-25 19:23:18 [INFO] Code generated:
+            ```
+            # Get the top 3 most popular car models
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+
+# Create a figure and axis
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# For each popular model
+for model in popular_models:
+    # Filter the data for the current model
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    
+    # Group the data by year and calculate the average selling price
+    avg_selling_price = model_data.groupby('Year')['Selling_Price'].mean().reset_index()
+    
+    # Plot the average selling price over time
+    ax.plot(avg_selling_price['Year'], avg_selling_price['Selling_Price'], label=model)
+
+# Set labels and title
+ax.set_xlabel('Year')
+ax.set_ylabel('Average Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+ax.legend()
+
+# Show the plot
+plt.show()
+            ```
+            
+2025-05-25 19:23:18 [INFO] Executing Step 2: CodeCleaning
+2025-05-25 19:23:18 [INFO] 
+Code running:
+```
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+fig, ax = plt.subplots(figsize=(10, 6))
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    avg_selling_price = model_data.groupby('Year')['Selling_Price'].mean().reset_index()
+    ax.plot(avg_selling_price['Year'], avg_selling_price['Selling_Price'], label=model)
+ax.set_xlabel('Year')
+ax.set_ylabel('Average Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+ax.legend()
+plt.show()
+        ```
+2025-05-25 19:23:20 [ERROR] Failed with error: Traceback (most recent call last):
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+2025-05-25 19:23:20 [WARNING] Failed to execute code retrying with a correction framework [retry number: 3]
+2025-05-25 19:23:20 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2025-05-25 19:23:20 [INFO] Executing Step 0: ErrorPromptGeneration
+2025-05-25 19:23:20 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: For popular car models, how has their Selling_Price depreciated over time (i.e., with increasing Year)?
+
+You generated this python code:
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+fig, ax = plt.subplots(figsize=(10, 6))
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    avg_selling_price = model_data.groupby('Year')['Selling_Price'].mean().reset_index()
+    ax.plot(avg_selling_price['Year'], avg_selling_price['Selling_Price'], label=model)
+ax.set_xlabel('Year')
+ax.set_ylabel('Average Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+ax.legend()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+2025-05-25 19:23:20 [INFO] Executing Step 1: CodeGenerator
+2025-05-25 19:23:22 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:23:22 [INFO] Prompt used:
+            
+
+### PREVIOUS CONVERSATION
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda Karizma,2003,5.9,0.82,51439,Diesel,Individual,Automatic,1
+Honda Activa 4G,2013,10.11,0.58,41678,Petrol,Dealer,Manual,0
+i10,2011,0.35,13.7,9000,CNG,Individual,Automatic,3
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: What is the average selling price of cars in the dataset, and how has this changed over the years?
+### ANSWER
+ The average selling price of cars in the dataset is 4.66. The plot of the average selling price over ...
+### QUERY
+ System: you are a sql agent working on car data and give accurate responses to the user queries
+User: For popular car models, how has their Selling_Price depreciated over time (i.e., with increasing Year)?
+
+You generated this python code:
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+fig, ax = plt.subplots(figsize=(10, 6))
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    avg_selling_price = model_data.groupby('Year')['Selling_Price'].mean().reset_index()
+    ax.plot(avg_selling_price['Year'], avg_selling_price['Selling_Price'], label=model)
+ax.set_xlabel('Year')
+ax.set_ylabel('Average Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+ax.legend()
+plt.show()
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\venv\Lib\site-packages\pandasai\pipelines\chat\code_execution.py", line 175, in execute_code
+    raise NoResultFoundError("No result returned")
+pandasai.exceptions.NoResultFoundError: No result returned
+
+
+Fix the python code above and return the new python code:
+            
+2025-05-25 19:23:22 [INFO] Code generated:
+            ```
+            # Import necessary libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Assuming dfs is a list of dataframes and dfs[0] is the dataframe of interest
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+
+# Create a figure and axis
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Loop through each popular model
+for model in popular_models:
+    # Filter the dataframe for the current model
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    
+    # Group by year and calculate the average selling price
+    avg_selling_price = model_data.groupby('Year')['Selling_Price'].mean().reset_index()
+    
+    # Plot the average selling price over time
+    ax.plot(avg_selling_price['Year'], avg_selling_price['Selling_Price'], label=model)
+
+# Set labels and title
+ax.set_xlabel('Year')
+ax.set_ylabel('Average Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+ax.legend()
+
+# Display the plot
+plt.show()
+
+# Calculate the average selling price depreciation over time for popular car models
+depreciation_rates = []
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    avg_selling_price = model_data.groupby('Year')['Selling_Price'].mean().reset_index()
+    avg_selling_price['Depreciation_Rate'] = avg_selling_price['Selling_Price'].pct_change() * 100
+    depreciation_rates.append(avg_selling_price[['Year', 'Depreciation_Rate']])
+
+# Print the depreciation rates for popular car models
+for i, model in enumerate(popular_models):
+    print(f"Depreciation Rates for {model}:")
+    print(depreciation_rates[i])
+    print()
+            ```
+            
+2025-05-25 19:23:22 [INFO] Executing Step 2: CodeCleaning
+2025-05-25 19:23:22 [INFO] 
+Code running:
+```
+popular_models = dfs[0]['Car_Name'].value_counts().head(3).index
+fig, ax = plt.subplots(figsize=(10, 6))
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    avg_selling_price = model_data.groupby('Year')['Selling_Price'].mean().reset_index()
+    ax.plot(avg_selling_price['Year'], avg_selling_price['Selling_Price'], label=model)
+ax.set_xlabel('Year')
+ax.set_ylabel('Average Selling Price')
+ax.set_title('Depreciation of Popular Car Models Over Time')
+ax.legend()
+plt.show()
+depreciation_rates = []
+for model in popular_models:
+    model_data = dfs[0][dfs[0]['Car_Name'] == model]
+    avg_selling_price = model_data.groupby('Year')['Selling_Price'].mean().reset_index()
+    avg_selling_price['Depreciation_Rate'] = avg_selling_price['Selling_Price'].pct_change() * 100
+    depreciation_rates.append(avg_selling_price[['Year', 'Depreciation_Rate']])
+for i, model in enumerate(popular_models):
+    print(f'Depreciation Rates for {model}:')
+    print(depreciation_rates[i])
+    print()
+        ```
+2025-05-25 19:53:47 [INFO] Question: System: you are a sql agent working on provided car details csv and give accurate responses to the user queries
+User: Which fuel type (Petrol, Diesel, CNG) has the highest average selling price and why might this be?
+2025-05-25 19:53:47 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 19:53:47 [INFO] Prompt ID: 8d2c4283-e2cc-43e8-9dc8-00cd89eb658d
+2025-05-25 19:53:47 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 19:53:47 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 19:53:47 [INFO] Executing Step 1: CacheLookup
+2025-05-25 19:53:47 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 19:53:47 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Hero Splender Plus,2017,3.0,16.09,3000,Petrol,Dealer,Automatic,1
+Activa 3g,2018,14.73,23.73,18796,CNG,Individual,Manual,0
+Royal Enfield Thunder 350,2009,0.8,11.6,43535,Diesel,Individual,Manual,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are a sql agent working on provided car details csv and give accurate responses to the user queries
+User: Which fuel type (Petrol, Diesel, CNG) has the highest average selling price and why might this be?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 19:53:47 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 19:53:51 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 19:53:51 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Hero Splender Plus,2017,3.0,16.09,3000,Petrol,Dealer,Automatic,1
+Activa 3g,2018,14.73,23.73,18796,CNG,Individual,Manual,0
+Royal Enfield Thunder 350,2009,0.8,11.6,43535,Diesel,Individual,Manual,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are a sql agent working on provided car details csv and give accurate responses to the user queries
+User: Which fuel type (Petrol, Diesel, CNG) has the highest average selling price and why might this be?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 19:53:51 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data from the list of dataframes
+df = dfs[0]
+
+# Group the data by Fuel_Type and calculate the average Selling_Price
+average_selling_price = df.groupby('Fuel_Type')['Selling_Price'].mean().reset_index()
+
+# Find the fuel type with the highest average selling price
+max_average_selling_price = average_selling_price['Selling_Price'].max()
+max_fuel_type = average_selling_price.loc[average_selling_price['Selling_Price'] == max_average_selling_price, 'Fuel_Type'].values[0]
+
+# Plot a bar chart to visualize the data
+plt.figure(figsize=(10,6))
+plt.bar(average_selling_price['Fuel_Type'], average_selling_price['Selling_Price'])
+plt.xlabel('Fuel Type')
+plt.ylabel('Average Selling Price')
+plt.title('Average Selling Price by Fuel Type')
+plt.savefig('fuel_type_selling_price.png')
+
+# Declare result var: 
+result = {
+    "type": "string", 
+    "value": f"The fuel type with the highest average selling price is {max_fuel_type} with an average selling price of {max_average_selling_price}. This might be because {max_fuel_type} vehicles are generally more expensive to purchase and maintain, or because they are in higher demand."
+}
+            ```
+            
+2025-05-25 19:53:51 [INFO] Executing Step 4: CachePopulation
+2025-05-25 19:53:51 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 19:53:51 [INFO] Saving charts to C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\exports\charts\temp_chart.png
+2025-05-25 19:53:51 [INFO] 
+Code running:
+```
+df = dfs[0]
+average_selling_price = df.groupby('Fuel_Type')['Selling_Price'].mean().reset_index()
+max_average_selling_price = average_selling_price['Selling_Price'].max()
+max_fuel_type = average_selling_price.loc[average_selling_price['Selling_Price'] == max_average_selling_price, 'Fuel_Type'].values[0]
+plt.figure(figsize=(10, 6))
+plt.bar(average_selling_price['Fuel_Type'], average_selling_price['Selling_Price'])
+plt.xlabel('Fuel Type')
+plt.ylabel('Average Selling Price')
+plt.title('Average Selling Price by Fuel Type')
+plt.savefig('C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': f'The fuel type with the highest average selling price is {max_fuel_type} with an average selling price of {max_average_selling_price}. This might be because {max_fuel_type} vehicles are generally more expensive to purchase and maintain, or because they are in higher demand.'}
+        ```
+2025-05-25 19:53:51 [INFO] Executing Step 6: CodeExecution
+2025-05-25 19:53:52 [INFO] Executing Step 7: ResultValidation
+2025-05-25 19:53:52 [INFO] Answer: {'type': 'string', 'value': 'The fuel type with the highest average selling price is Diesel with an average selling price of 10.278500000000001. This might be because Diesel vehicles are generally more expensive to purchase and maintain, or because they are in higher demand.'}
+2025-05-25 19:53:52 [INFO] Executing Step 8: ResultParsing
+2025-05-25 19:53:53 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 20:29:33 [INFO] Question: System: you are SQL agent working up on the Structured data and give good accurate responses to the user.
+User: Which car models ("Car_Name") have the highest average Selling_Price?
+2025-05-25 20:29:34 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 20:29:34 [INFO] Prompt ID: 6b6fead6-95fa-4307-b96c-e89e903cfe86
+2025-05-25 20:29:34 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 20:29:34 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 20:29:34 [INFO] Executing Step 1: CacheLookup
+2025-05-25 20:29:34 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 20:29:34 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+i10,2014,1.0,0.74,4300,Diesel,Individual,Manual,0
+Royal Enfield Thunder 500,2011,4.35,5.98,5600,CNG,Individual,Manual,3
+Honda CBR 150,2007,6.25,15.04,40588,Petrol,Dealer,Automatic,1
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are SQL agent working up on the Structured data and give good accurate responses to the user.
+User: Which car models ("Car_Name") have the highest average Selling_Price?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 20:29:34 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 20:29:38 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 20:29:38 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+i10,2014,1.0,0.74,4300,Diesel,Individual,Manual,0
+Royal Enfield Thunder 500,2011,4.35,5.98,5600,CNG,Individual,Manual,3
+Honda CBR 150,2007,6.25,15.04,40588,Petrol,Dealer,Automatic,1
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are SQL agent working up on the Structured data and give good accurate responses to the user.
+User: Which car models ("Car_Name") have the highest average Selling_Price?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 20:29:38 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the data
+df = dfs[0]
+
+# Group by 'Car_Name' and calculate the average 'Selling_Price'
+average_selling_price = df.groupby('Car_Name')['Selling_Price'].mean().reset_index()
+
+# Sort the average selling prices in descending order
+average_selling_price = average_selling_price.sort_values(by='Selling_Price', ascending=False)
+
+# Get the car model with the highest average selling price
+highest_average_selling_price = average_selling_price.iloc[0]
+
+# Print the car model with the highest average selling price
+print(f"The car model with the highest average selling price is {highest_average_selling_price['Car_Name']} with an average selling price of {highest_average_selling_price['Selling_Price']}.")
+
+# Plot a bar chart of the top 5 car models by average selling price
+top_5 = average_selling_price.head(5)
+plt.figure(figsize=(10,6))
+plt.bar(top_5['Car_Name'], top_5['Selling_Price'])
+plt.xlabel('Car Model')
+plt.ylabel('Average Selling Price')
+plt.title('Top 5 Car Models by Average Selling Price')
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.savefig('average_selling_price_plot.png')
+
+# Declare result var: 
+result = {
+    "type": "string", 
+    "value": f"The car model with the highest average selling price is {highest_average_selling_price['Car_Name']} with an average selling price of {highest_average_selling_price['Selling_Price']}."
+}
+            ```
+            
+2025-05-25 20:29:38 [INFO] Executing Step 4: CachePopulation
+2025-05-25 20:29:38 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 20:29:38 [INFO] Saving charts to C:\Users\PRASHANTH\Downloads\DATALAKES+100\DATALAKES+100\exports\charts\temp_chart.png
+2025-05-25 20:29:38 [INFO] 
+Code running:
+```
+df = dfs[0]
+average_selling_price = df.groupby('Car_Name')['Selling_Price'].mean().reset_index()
+average_selling_price = average_selling_price.sort_values(by='Selling_Price', ascending=False)
+highest_average_selling_price = average_selling_price.iloc[0]
+print(f"The car model with the highest average selling price is {highest_average_selling_price['Car_Name']} with an average selling price of {highest_average_selling_price['Selling_Price']}.")
+top_5 = average_selling_price.head(5)
+plt.figure(figsize=(10, 6))
+plt.bar(top_5['Car_Name'], top_5['Selling_Price'])
+plt.xlabel('Car Model')
+plt.ylabel('Average Selling Price')
+plt.title('Top 5 Car Models by Average Selling Price')
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.savefig('C:/Users/PRASHANTH/Downloads/DATALAKES+100/DATALAKES+100/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': f"The car model with the highest average selling price is {highest_average_selling_price['Car_Name']} with an average selling price of {highest_average_selling_price['Selling_Price']}."}
+        ```
+2025-05-25 20:29:38 [INFO] Executing Step 6: CodeExecution
+2025-05-25 20:29:39 [INFO] Executing Step 7: ResultValidation
+2025-05-25 20:29:39 [INFO] Answer: {'type': 'string', 'value': 'The car model with the highest average selling price is land cruiser with an average selling price of 35.0.'}
+2025-05-25 20:29:39 [INFO] Executing Step 8: ResultParsing
+2025-05-25 20:29:40 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

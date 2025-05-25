@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Agent UI</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>SQL Agent</h1>
+    <p>Ask natural-language questions of your CSV/Excel data.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>1. Upload File</h2>
+      <input type="file" id="fileInput" accept=".csv,.xls,.xlsx" />
+      <button id="uploadBtn">Upload</button>
+      <div id="columnsList" class="info"></div>
+    </section>
+
+    <section class="card">
+      <h2>2. Set System Prompt</h2>
+      <textarea id="promptInput" placeholder="Describe your columns…"></textarea>
+      <button id="setPromptBtn" disabled>Set Prompt</button>
+      <div id="promptStatus" class="info"></div>
+    </section>
+
+    <section class="card">
+      <h2>3. Ask a Question</h2>
+      <input type="text" id="queryInput" placeholder="e.g. What is the average of X?" />
+      <button id="chatBtn" disabled>Send</button>
+      <div id="responseArea" class="response"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2025 -prashanth</small>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

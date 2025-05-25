@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Agent UI</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #2d3748;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+      opacity: 0.3;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 2;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: -2rem auto 2rem;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .step-number {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 2px dashed #cbd5e0;
+      border-radius: 12px;
+      font-size: 1rem;
+      background: #f8fafc;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    input[type="file"]:hover {
+      border-color: #667eea;
+      background: #f0f4ff;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1rem;
+      background: white;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    input[type="text"]:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      transform: translateY(-2px);
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+      font-family: 'JetBrains Mono', 'Consolas', monospace;
+    }
+
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      min-width: 120px;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    button:disabled {
+      background: linear-gradient(135deg, #cbd5e0 0%, #a0aec0 100%);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    button:disabled::before {
+      display: none;
+    }
+
+    .info {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, #e6fffa 0%, #f0fff4 100%);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: #2d5a27;
+      border-left: 4px solid #38a169;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .response {
+      margin-top: 1rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      border-radius: 12px;
+      white-space: pre-wrap;
+      font-family: 'JetBrains Mono', 'Consolas', monospace;
+      font-size: 0.9rem;
+      color: #2d3748;
+      border-left: 4px solid #667eea;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      margin-top: 3rem;
+    }
+
+    footer small {
+      color: #718096;
+      font-size: 0.9rem;
+    }
+
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+      margin-left: 0.5rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      main {
+        margin: -1rem auto 1rem;
+        padding: 0 0.5rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      button {
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+    }
+
+    /* Success states */
+    .success {
+      background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+      border-left-color: #38a169;
+      color: #2d5a27;
+    }
+
+    /* Error states */
+    .error {
+      background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+      border-left-color: #e53e3e;
+      color: #742a2a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>  SQL Agent </h1>
+    <p>Ask natural-language questions of your CSV/Excel data and get instant insights</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2><span class="step-number">1</span>Upload Your Data File</h2>
+      <input type="file" id="fileInput" accept=".csv,.xls,.xlsx" />
+      <button id="uploadBtn"> Upload File</button>
+      <div id="columnsList" class="info" style="display: none;"></div>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-number">2</span>Configure System Context</h2>
+      <textarea id="promptInput" placeholder="Describe your data columns and what they represent. For example: 'This dataset contains sales data with columns for date, product, region, sales amount, and customer type. Focus on providing insights about trends and performance metrics.'"></textarea>
+      <button id="setPromptBtn" disabled>🔧 Set Context</button>
+      <div id="promptStatus" class="info" style="display: none;"></div>
+    </section>
+
+    <section class="card">
+      <h2><span class="step-number">3</span>Ask Your Question</h2>
+      <input type="text" id="queryInput" placeholder="What insights would you like? e.g., 'What are the top 5 products by sales?' or 'Show me monthly trends'" />
+      <button id="chatBtn" disabled>💬 Get Answer</button>
+      <div id="responseArea" class="response" style="display: none;"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2025 SQL Agent_developed by Prashanth • Powered by FastAPI, PandasAI & Groq</small>
+  </footer>
+
+  <script>
+    const uploadBtn = document.getElementById('uploadBtn');
+    const setPromptBtn = document.getElementById('setPromptBtn');
+    const chatBtn = document.getElementById('chatBtn');
+
+    let uploadId = null;
+
+    // Add loading state helper
+    function setLoading(button, isLoading) {
+      if (isLoading) {
+        button.innerHTML += '<span class="loading"></span>';
+        button.disabled = true;
+      } else {
+        const loading = button.querySelector('.loading');
+        if (loading) loading.remove();
+        button.disabled = false;
+      }
+    }
+
+    // Show info with animation
+    function showInfo(elementId, message, type = 'info') {
+      const element = document.getElementById(elementId);
+      element.textContent = message;
+      element.className = `info ${type}`;
+      element.style.display = 'block';
+    }
+
+    // 1. Upload file and list columns
+    uploadBtn.addEventListener('click', async () => {
+      const fileInput = document.getElementById('fileInput');
+      if (!fileInput.files.length) {
+        alert('Please select a file first.');
+        return;
+      }
+
+      setLoading(uploadBtn, true);
+      
+      try {
+        const form = new FormData();
+        form.append('file', fileInput.files[0]);
+
+        const res = await fetch('/upload-file', { method: 'POST', body: form });
+        
+        if (!res.ok) {
+          throw new Error('Upload failed');
+        }
+
+        const { upload_id, columns } = await res.json();
+        uploadId = upload_id;
+        
+        showInfo('columnsList', ` File uploaded successfully! Detected columns: ${columns.join(', ')}`, 'success');
+        setPromptBtn.disabled = false;
+        
+      } catch (error) {
+        showInfo('columnsList', `Upload failed: ${error.message}`, 'error');
+      } finally {
+        setLoading(uploadBtn, false);
+      }
+    });
+
+    // 2. Set system prompt
+    setPromptBtn.addEventListener('click', async () => {
+      const prompt = document.getElementById('promptInput').value.trim();
+      if (!prompt) {
+        alert('Please enter a system context description.');
+        return;
+      }
+
+      setLoading(setPromptBtn, true);
+
+      try {
+        const res = await fetch('/set-prompt', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ upload_id: uploadId, system_prompt: prompt })
+        });
+
+        if (!res.ok) {
+          throw new Error('Failed to set context');
+        }
+
+        showInfo('promptStatus', ' System context configured successfully! You can now ask questions.', 'success');
+        chatBtn.disabled = false;
+
+      } catch (error) {
+        showInfo('promptStatus', ` Failed to set context: ${error.message}`, 'error');
+      } finally {
+        setLoading(setPromptBtn, false);
+      }
+    });
+
+    // 3. Chat/query
+    chatBtn.addEventListener('click', async () => {
+      const query = document.getElementById('queryInput').value.trim();
+      if (!query) {
+        alert('Please enter your question.');
+        return;
+      }
+
+      setLoading(chatBtn, true);
+      const responseArea = document.getElementById('responseArea');
+      responseArea.style.display = 'block';
+      responseArea.textContent = '🤔 Analyzing your data and generating insights...';
+
+      try {
+        const res = await fetch('/chat', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ upload_id: uploadId, query })
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.detail || 'Query failed');
+        }
+
+        const { response } = await res.json();
+        responseArea.textContent = response;
+        
+      } catch (error) {
+        responseArea.textContent = `❌ Error: ${error.message}`;
+        responseArea.className = 'response error';
+      } finally {
+        setLoading(chatBtn, false);
+      }
+    });
+
+    // Add drag and drop functionality
+    const fileInput = document.getElementById('fileInput');
+    const uploadCard = fileInput.closest('.card');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      uploadCard.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      uploadCard.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      uploadCard.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+      uploadCard.style.background = 'rgba(102, 126, 234, 0.1)';
+      uploadCard.style.borderColor = '#667eea';
+    }
+
+    function unhighlight(e) {
+      uploadCard.style.background = '';
+      uploadCard.style.borderColor = '';
+    }
+
+    uploadCard.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      
+      if (files.length > 0) {
+        fileInput.files = files;
+        showInfo('columnsList', `File "${files[0].name}" ready for upload.`, 'info');
+      }
+    }
+  </script>
+</body>
+</html>

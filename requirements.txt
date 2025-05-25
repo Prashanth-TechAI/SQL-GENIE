@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pandas==2.2.2
+pandasai
+langchain-groq
+python-multipart
+numpy==1.26.4
+langchain

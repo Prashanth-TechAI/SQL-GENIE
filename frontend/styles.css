@@ -1,0 +1,88 @@
+/* Reset & Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+header, footer {
+  text-align: center;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+header h1 {
+  font-size: 2rem;
+  color: #005f73;
+}
+header p { color: #555; }
+
+/* Layout */
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+}
+.card h2 {
+  margin-bottom: 0.8rem;
+  color: #0a9396;
+}
+
+/* Inputs & Buttons */
+input[type="file"],
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+textarea { height: 80px; resize: vertical; }
+button {
+  background: #005f73;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:disabled {
+  background: #94d2bd;
+  cursor: not-allowed;
+}
+button:not(:disabled):hover {
+  background: #0a9396;
+}
+
+/* Info & Response */
+.info {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+.response {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #e9fff9;
+  border-left: 4px solid #005f73;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-family: Consolas, monospace;
+  color: #023047;
+}
+
+footer small {
+  color: #777;
+}
