@@ -1895,3 +1895,434 @@ result = {'type': 'string', 'value': f"The car model with the highest average se
 2025-05-25 20:29:39 [INFO] Answer: {'type': 'string', 'value': 'The car model with the highest average selling price is land cruiser with an average selling price of 35.0.'}
 2025-05-25 20:29:39 [INFO] Executing Step 8: ResultParsing
 2025-05-25 20:29:40 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 22:42:29 [INFO] Question: System: Your are a SQl agent working up on the car data and give the exact reposes to the user queries .
+User: how many cars are there in total
+2025-05-25 22:42:30 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 22:42:30 [INFO] Prompt ID: ac64dfb0-0e19-48a2-af2b-157fea501ddc
+2025-05-25 22:42:30 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 22:42:30 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 22:42:30 [INFO] Executing Step 1: CacheLookup
+2025-05-25 22:42:30 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 22:42:30 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda CB twister,2005,3.8,5.9,75000,Petrol,Individual,Automatic,3
+Hero Passion Pro,2015,2.25,1.47,5700,CNG,Dealer,Automatic,1
+Honda Activa 4G,2011,3.9,7.98,6900,Diesel,Dealer,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: Your are a SQl agent working up on the car data and give the exact reposes to the user queries .
+User: how many cars are there in total
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 22:42:30 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 22:42:33 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 22:42:33 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+Honda CB twister,2005,3.8,5.9,75000,Petrol,Individual,Automatic,3
+Hero Passion Pro,2015,2.25,1.47,5700,CNG,Dealer,Automatic,1
+Honda Activa 4G,2011,3.9,7.98,6900,Diesel,Dealer,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: Your are a SQl agent working up on the car data and give the exact reposes to the user queries .
+User: how many cars are there in total
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 22:42:34 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load data
+dfs = [pd.DataFrame({
+    'Car_Name': ['Honda CB twister', 'Hero Passion Pro', 'Honda Activa 4G'],
+    'Year': [2005, 2015, 2011],
+    'Selling_Price': [3.8, 2.25, 3.9],
+    'Present_Price': [5.9, 1.47, 7.98],
+    'Kms_Driven': [75000, 5700, 6900],
+    'Fuel_Type': ['Petrol', 'CNG', 'Diesel'],
+    'Seller_Type': ['Individual', 'Dealer', 'Dealer'],
+    'Transmission': ['Automatic', 'Automatic', 'Manual'],
+    'Owner': [3, 1, 0]
+})]
+
+# Write code here
+# Calculate total number of cars
+total_cars = len(dfs[0])
+
+# Declare result var: 
+result = { 
+    "type": "number", 
+    "value": total_cars 
+}
+
+print(result)
+            ```
+            
+2025-05-25 22:42:34 [INFO] Executing Step 4: CachePopulation
+2025-05-25 22:42:34 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 22:42:34 [INFO] 
+Code running:
+```
+total_cars = len(dfs[0])
+result = {'type': 'number', 'value': total_cars}
+print(result)
+        ```
+2025-05-25 22:42:34 [INFO] Executing Step 6: CodeExecution
+2025-05-25 22:42:34 [INFO] Executing Step 7: ResultValidation
+2025-05-25 22:42:34 [INFO] Answer: {'type': 'number', 'value': 301}
+2025-05-25 22:42:34 [INFO] Executing Step 8: ResultParsing
+2025-05-25 22:42:35 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 22:46:55 [INFO] Question: System: Your are a SQl agent working up on the car data and give the exact reposes to the user queries .
+User: Which car models ("Car_Name") have the highest average Selling_Price?
+2025-05-25 22:46:55 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 22:46:55 [INFO] Prompt ID: f99135f8-7de7-46bc-bf6a-959737319f21
+2025-05-25 22:46:56 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 22:46:56 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 22:46:56 [INFO] Executing Step 1: CacheLookup
+2025-05-25 22:46:56 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 22:46:56 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+TVS Sport ,2014,6.75,9.95,29000,CNG,Individual,Automatic,3
+Bajaj Pulsar NS 200,2015,8.4,7.74,53675,Diesel,Dealer,Automatic,1
+Hero Honda Passion Pro,2013,0.6,0.51,53000,Petrol,Individual,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: Your are a SQl agent working up on the car data and give the exact reposes to the user queries .
+User: Which car models ("Car_Name") have the highest average Selling_Price?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 22:46:56 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 22:46:57 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 22:46:57 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+TVS Sport ,2014,6.75,9.95,29000,CNG,Individual,Automatic,3
+Bajaj Pulsar NS 200,2015,8.4,7.74,53675,Diesel,Dealer,Automatic,1
+Hero Honda Passion Pro,2013,0.6,0.51,53000,Petrol,Individual,Manual,0
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: Your are a SQl agent working up on the car data and give the exact reposes to the user queries .
+User: Which car models ("Car_Name") have the highest average Selling_Price?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 22:46:57 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataframe
+df = dfs[0]
+
+# Calculate the average Selling_Price for each Car_Name
+avg_selling_price = df.groupby('Car_Name')['Selling_Price'].mean().reset_index()
+
+# Sort the dataframe in descending order based on the average Selling_Price
+avg_selling_price = avg_selling_price.sort_values(by='Selling_Price', ascending=False)
+
+# Get the Car_Name with the highest average Selling_Price
+highest_avg_price_car = avg_selling_price.iloc[0]['Car_Name']
+
+# Declare result var:
+result = { 
+    "type": "string", 
+    "value": f"The car model with the highest average Selling_Price is {highest_avg_price_car}." 
+}
+
+# Optional: plot a bar chart to visualize the average Selling_Price for each Car_Name
+# plt.figure(figsize=(10,6))
+# plt.bar(avg_selling_price['Car_Name'], avg_selling_price['Selling_Price'])
+# plt.xlabel('Car_Name')
+# plt.ylabel('Average Selling_Price')
+# plt.title('Average Selling_Price by Car_Name')
+# plt.xticks(rotation=90)
+# plt.tight_layout()
+# plt.savefig('avg_selling_price_by_car_name.png')
+
+# To get the plot result
+# result = { 
+#     "type": "plot", 
+#     "value": 'avg_selling_price_by_car_name.png' 
+# }
+            ```
+            
+2025-05-25 22:46:57 [INFO] Executing Step 4: CachePopulation
+2025-05-25 22:46:57 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 22:46:57 [INFO] Saving charts to C:\Users\PRASHANTH\Downloads\DATALAKES+100\SQL-GENIE\exports\charts\temp_chart.png
+2025-05-25 22:46:57 [INFO] 
+Code running:
+```
+df = dfs[0]
+avg_selling_price = df.groupby('Car_Name')['Selling_Price'].mean().reset_index()
+avg_selling_price = avg_selling_price.sort_values(by='Selling_Price', ascending=False)
+highest_avg_price_car = avg_selling_price.iloc[0]['Car_Name']
+result = {'type': 'string', 'value': f'The car model with the highest average Selling_Price is {highest_avg_price_car}.'}
+        ```
+2025-05-25 22:46:57 [INFO] Executing Step 6: CodeExecution
+2025-05-25 22:46:57 [INFO] Executing Step 7: ResultValidation
+2025-05-25 22:46:57 [INFO] Answer: {'type': 'string', 'value': 'The car model with the highest average Selling_Price is land cruiser.'}
+2025-05-25 22:46:57 [INFO] Executing Step 8: ResultParsing
+2025-05-25 22:46:59 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 23:42:31 [INFO] Question: System: you are sql agent
+User: Which car models ("Car_Name") have the highest average Selling_Price?
+2025-05-25 23:42:32 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-05-25 23:42:32 [INFO] Prompt ID: 36022291-8f8c-49c0-b57b-8490597e5c88
+2025-05-25 23:42:32 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-05-25 23:42:32 [INFO] Executing Step 0: ValidatePipelineInput
+2025-05-25 23:42:32 [INFO] Executing Step 1: CacheLookup
+2025-05-25 23:42:32 [INFO] Executing Step 2: PromptGeneration
+2025-05-25 23:42:32 [INFO] Using prompt: <dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+UM Renegade Mojave,2013,3.5,8.93,20273,Petrol,Individual,Manual,1
+ciaz,2003,3.6,1.9,54242,CNG,Dealer,Automatic,0
+Yamaha FZ 16,2004,4.6,22.83,18828,Diesel,Dealer,Automatic,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent
+User: Which car models ("Car_Name") have the highest average Selling_Price?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-05-25 23:42:32 [INFO] Executing Step 3: CodeGenerator
+2025-05-25 23:42:35 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-25 23:42:35 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:301x9
+Car_Name,Year,Selling_Price,Present_Price,Kms_Driven,Fuel_Type,Seller_Type,Transmission,Owner
+UM Renegade Mojave,2013,3.5,8.93,20273,Petrol,Individual,Manual,1
+ciaz,2003,3.6,1.9,54242,CNG,Dealer,Automatic,0
+Yamaha FZ 16,2004,4.6,22.83,18828,Diesel,Dealer,Automatic,3
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ System: you are sql agent
+User: Which car models ("Car_Name") have the highest average Selling_Price?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-05-25 23:42:35 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataframe
+df = dfs[0]
+
+# Group by 'Car_Name' and calculate the average 'Selling_Price'
+avg_selling_price = df.groupby('Car_Name')['Selling_Price'].mean().reset_index()
+
+# Sort the dataframe in descending order based on 'Selling_Price'
+avg_selling_price = avg_selling_price.sort_values(by='Selling_Price', ascending=False)
+
+# Get the car model with the highest average selling price
+highest_avg_selling_price = avg_selling_price.iloc[0]
+
+# Print the car model with the highest average selling price
+print(f"The car model with the highest average selling price is {highest_avg_selling_price['Car_Name']} with an average selling price of {highest_avg_selling_price['Selling_Price']}")
+
+# Plot the top 5 car models with the highest average selling price
+top_5_avg_selling_price = avg_selling_price.head(5)
+plt.figure(figsize=(10, 6))
+plt.bar(top_5_avg_selling_price['Car_Name'], top_5_avg_selling_price['Selling_Price'])
+plt.xlabel('Car Model')
+plt.ylabel('Average Selling Price')
+plt.title('Top 5 Car Models with the Highest Average Selling Price')
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.savefig('top_5_avg_selling_price.png')
+
+# Declare result var: 
+result = {
+    "type": "string",
+    "value": f"The car model with the highest average selling price is {highest_avg_selling_price['Car_Name']}."
+}
+            ```
+            
+2025-05-25 23:42:35 [INFO] Executing Step 4: CachePopulation
+2025-05-25 23:42:35 [INFO] Executing Step 5: CodeCleaning
+2025-05-25 23:42:36 [INFO] Saving charts to C:\Users\PRASHANTH\Downloads\DATALAKES+100\SQL-GENIE\exports\charts\temp_chart.png
+2025-05-25 23:42:36 [INFO] 
+Code running:
+```
+df = dfs[0]
+avg_selling_price = df.groupby('Car_Name')['Selling_Price'].mean().reset_index()
+avg_selling_price = avg_selling_price.sort_values(by='Selling_Price', ascending=False)
+highest_avg_selling_price = avg_selling_price.iloc[0]
+print(f"The car model with the highest average selling price is {highest_avg_selling_price['Car_Name']} with an average selling price of {highest_avg_selling_price['Selling_Price']}")
+top_5_avg_selling_price = avg_selling_price.head(5)
+plt.figure(figsize=(10, 6))
+plt.bar(top_5_avg_selling_price['Car_Name'], top_5_avg_selling_price['Selling_Price'])
+plt.xlabel('Car Model')
+plt.ylabel('Average Selling Price')
+plt.title('Top 5 Car Models with the Highest Average Selling Price')
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.savefig('C:/Users/PRASHANTH/Downloads/DATALAKES+100/SQL-GENIE/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': f"The car model with the highest average selling price is {highest_avg_selling_price['Car_Name']}."}
+        ```
+2025-05-25 23:42:36 [INFO] Executing Step 6: CodeExecution
+2025-05-25 23:42:37 [INFO] Executing Step 7: ResultValidation
+2025-05-25 23:42:37 [INFO] Answer: {'type': 'string', 'value': 'The car model with the highest average selling price is land cruiser.'}
+2025-05-25 23:42:37 [INFO] Executing Step 8: ResultParsing
+2025-05-25 23:42:38 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"

@@ -6,3 +6,4 @@ langchain-groq
 python-multipart
 numpy==1.26.4
 langchain
+openpyxl xlrd
