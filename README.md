@@ -33,7 +33,7 @@ A lightweight **SQL-like AI Agent** that answers natural language questions on *
 ![FastAPI Docs](images/apis.png)
 
 ### File Upload Process
-![File Upload](images/file-upload.png)
+![File Upload](images/file.png)
 
 ### Setting System Prompt
 ![System Prompt](images/prompt.png)
